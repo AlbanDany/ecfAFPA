@@ -10,17 +10,21 @@ class chatController
         if(isset($_POST['envoimsg'])){
 
 
-            $message = htmlspecialchars($_POST['message']);
+            $message = trim(htmlentities($_POST['message']));
 
-            if(!isset($_SESSION['User'])) {
+            if(!isset ($_SESSION['User'])) {
                 $_SESSION['user'] = $this->test_input($_POST['pseudo']);
                 $idUser = $leChat->saveUser($_SESSION['user']);
             }
             else{
-               // $result = $leChat->getIdUser($_SESSION['User']);
                 $idUser = $_SESSION['idUser'];
             }
-            $leChat->saveMessage($message,$idUser);
+            if(empty($message) || empty($idUser)){
+                $_SESSION['message'] = "Erreur, champ vide";
+            }
+            else{
+                $leChat->saveMessage($message,$idUser);
+            }
             header("Location: index.php?route=chat");
         }
         else{

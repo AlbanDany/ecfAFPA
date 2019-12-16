@@ -10,9 +10,6 @@
                     <input class="register" type="password" name="mdpConfirm" /><br>
                     Entrer votre adresse mail<br>
                     <input class="register" type="email" pattern="^[a-z0-9._-]+@[a-z0-9._-]{2,}\.[a-z]{2,4}$" required title = "Adresse mail non valide" name="adresseMail" /><br>
-
-
-
                     <input class="register_button" type="submit" name="btnRegister" value="S'inscrire">
 
 

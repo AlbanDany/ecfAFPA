@@ -33,14 +33,22 @@ header {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    min-height: 15em;
     background-color: #308ebf;
-    height: 5em;
+    background-image: url("../img/header.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
 }
+
+
 .menu
 {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
+    align-items: flex-end;
+    margin-bottom: 10px;
 
 }
 .menu li
@@ -69,8 +77,12 @@ main{
     flex-direction: column;
     justify-content: space-around;
     width: 80%;
-    min-height: 80vh;
     background-color: #2AA4BF;
+}
+
+.chatAffichage{
+    height : 500px;
+    overflow: scroll;
 }
 
 footer {position: fixed; bottom: 0;}
@@ -101,6 +113,7 @@ th{
     border-bottom: 1px solid #ddd;
 }
 tr:hover {background-color: #2076bf;}
+
 
 
 /* Boutons */

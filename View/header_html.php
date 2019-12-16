@@ -9,7 +9,6 @@
 	</head>
 	<body>
 		<header>
-
 			<nav class="menu">
 				<ul>
 					<li><a class ="bouton" href="index.php"><i class="fas fa-home"></i></a></li>
@@ -36,4 +35,5 @@
 					echo'<a class ="bouton" href="index.php?route=register">Inscription</a>';
 				}
 				?>
+
 			</nav>
