@@ -36,6 +36,7 @@ class userController{
                 if (password_verify ($_POST['mdp'], $dataMdp['pwd'])) // Le mot de passe est correct
                 {
                     $_SESSION['User'] = $userClear;
+                    $_SESSION['idUser'] = $dataUser['idUser'];
                     header("Location: ./index.php");
                 }
                 else

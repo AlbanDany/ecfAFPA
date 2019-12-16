@@ -13,7 +13,7 @@
                         ?>
                         <tr>
                             <td>
-                                <?php echo $row['idUser'];?>
+                                <?php echo $row['nom'];?>
                             </td>
                             <td>
                                 <?php echo $row['contenu'];?>
@@ -28,8 +28,13 @@
         </div>
         <div class="chatInput">
             <form method="post">
-                Pseudo :
-                <input class= "chat_input" type="text"  pattern="[A-Za-z0-9]+" name="pseudo"autofocus/> <br>
+               <?php if(isset($_SESSION['User'])) { ?>
+                <?php
+                echo 'Pseudo : '.$_SESSION['User'].' <br>';
+               }else{?>
+                   Pseudo :
+                   <input class= "chat_input" type = "text"  pattern = "[A-Za-z0-9]+" name = "pseudo"autofocus /> <br >
+                <?php }?>
                 Message :
                 <input class= "chat_input" type="text"  name="message" /> <br>
                 <input class="chat_button" type="submit" value="Envoi" name="envoimsg">

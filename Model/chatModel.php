@@ -28,7 +28,15 @@ class chatModel {
     public function getMessage(){
         $bdd2 = Model::getInstance();
         $bdd = $bdd2->retourneConnexion();
-        $req = "SELECT  contenu, datemsg, idUser FROM message ORDER BY datemsg DESC";
+        $req = "SELECT  contenu, datemsg, nom FROM message AS m, user AS u WHERE m.idUser = u.idUser ORDER BY datemsg DESC";
+        $result = $bdd->query($req);
+        return $result->fetchAll();
+    }
+
+    public function getIdUser($user){
+        $bdd2 = Model::getInstance();
+        $bdd = $bdd2->retourneConnexion();
+        $req = "SELECT idUser FROM user WHERE nom = '". $user ."'";
         $result = $bdd->query($req);
         return $result->fetchAll();
     }

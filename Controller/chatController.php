@@ -4,17 +4,22 @@ require "./Model/chatModel.php";
 class chatController
 {
     public function chatAffiche(){
-        session_start();
         $leChat = new chatModel();
         $lemsg = $leChat->getMessage();
 
         if(isset($_POST['envoimsg'])){
 
-            $_SESSION['user'] = $this->test_input($_POST['pseudo']);
+
             $message = htmlspecialchars($_POST['message']);
 
-
-            $idUser =  $leChat->saveUser($_SESSION['user']);
+            if(!isset($_SESSION['User'])) {
+                $_SESSION['user'] = $this->test_input($_POST['pseudo']);
+                $idUser = $leChat->saveUser($_SESSION['user']);
+            }
+            else{
+               // $result = $leChat->getIdUser($_SESSION['User']);
+                $idUser = $_SESSION['idUser'];
+            }
             $leChat->saveMessage($message,$idUser);
             header("Location: index.php?route=chat");
         }
