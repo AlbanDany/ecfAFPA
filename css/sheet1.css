@@ -61,7 +61,7 @@ main{
     padding: 10px;
     position: relative;
     width: 20%;
-    background-color: white;
+    background-color: #0597ff;
 }
 
 .container{
@@ -87,7 +87,9 @@ footer {position: fixed; bottom: 0;}
     border: 1px solid black;
 }
 
-
+input{
+    background-color: white;
+}
 th, td {
     padding : 10px;
     text-align: center;

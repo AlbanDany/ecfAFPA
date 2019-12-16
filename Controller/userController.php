@@ -3,14 +3,13 @@ require './Model/userModel.php';
 
 class userController{
     public function connexion(){
-        session_start();
         if (isset($_POST['btnConnexion'])){
             $userClear = $this->test_input($_POST['user']);
             $mdp = password_hash("'".$_POST['mdp']."'", PASSWORD_BCRYPT);
             $theUser = new userModel();
             $dataUser = $theUser->getUserData($userClear);
             $dataMdp = $theUser->getDataMdp($dataUser['idUser']);
-            $date = date_create($dataMdp['dateDebut']);
+            $date = date_create($dataMdp['date']);
             $dateFin = date_add($date, date_interval_create_from_date_string('3 months'));
             $dateJour= date_create(date('Y-m-d'));
 
@@ -34,7 +33,7 @@ class userController{
 
             if ($userClear == $dataUser['nom']) //L'utilisateur est correct
             {
-                if (password_verify ($_POST['mdp'], $dataMdp['mdp'])) // Le mot de passe est correct
+                if (password_verify ($_POST['mdp'], $dataMdp['pwd'])) // Le mot de passe est correct
                 {
                     $_SESSION['User'] = $userClear;
                     header("Location: ./index.php");
@@ -65,7 +64,7 @@ class userController{
             $email = $this->test_input($_POST['adresseMail']);
             $actif = 0; //Par défaut le compte est inactif
             $mdp = password_hash($_POST['motdepasse'], PASSWORD_BCRYPT);
-            $token = bin2hex(random_bytes(32));
+          //  $token = bin2hex(random_bytes(32));
 
             $newUser = new userModel();
             $resCheck = $newUser->user_exist($user,$email);
@@ -96,8 +95,8 @@ class userController{
             }
 
             //Si il n'y a pas d'erreurs
-            $confirmKey = "12345";
-            $userID =  $newUser->insert_user($user,$email,$confirmKey);
+            $token = "12345";
+            $userID =  $newUser->insert_user($user,$email,$token);
             var_dump($userID);
             $newUser->insert_mdp($mdp,$userID);
             $_SESSION['message'] = "Inscription réussie, veuillez vous connecter ";

@@ -32,6 +32,7 @@
 					echo '<h3> Bienvenue '.$_SESSION['User'].'</h3>';
 				}
 				else{
+				    echo '<h3>Bienvenue</h3> <br>';
 					echo'<a class ="bouton" href="index.php?route=register">Inscription</a>';
 				}
 				?>
